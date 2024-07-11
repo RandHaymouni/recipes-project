@@ -1,16 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Hero from '../src/pages/Hero.jsx';
+import Home from '../src/pages/Home.jsx';
+import NotFound from '../src/pages/NotFound.jsx';
+import RecipeDetails from '../src/pages/RecipeDetails.jsx';
+import Login from '../src/pages/Login.jsx';
+import './App.css';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [recipes, setRecipes] = useState([]);
+  const [loding, setLoding] = useState(true);
 
+  useEffect(() => {
+    const getRecipes = () => {
+      fetch("https://dummyjson.com/recipes")
+        .then((res) => {
+          return res.json();
+        }).then((data) => {
+          setRecipes(data.recipes);
+          setLoding(false);
+        })
+    };
+    getRecipes();
+  }, []);
+
+  if (!loding) {
+    <span class="loader"></span>
+  }
   return (
     <div>
-      <h1 className="text-3xl font-bold underline text-red-500">
-        Hello world!
-      </h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home recipes={recipes} />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
