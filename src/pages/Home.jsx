@@ -10,7 +10,7 @@ const Home = ({ recipes }) => {
         <div>
             <Navbar />
             <div className="flex-col m-4 gap-x-3">
-                <div className="mt-32 pb-7">
+                <div className="mt-28 pb-7">
                     <h1 className="justify-center items-center text-center text-black font-normal text-7xl mt-10">
                         Discover Delicious
                     </h1>

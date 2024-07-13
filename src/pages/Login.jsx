@@ -16,7 +16,7 @@ const Login = () => {
             <div className="absolute inset-0 bg-black opacity-75"></div>
             <button
                 onClick={() => navigate("/")}
-                className="flex items-center justify-center absolute z-10 top-14 left-20 w-24 gap-2 px-3 h-8 me-3 text-sm font-medium text-indigo-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+                className="flex items-center justify-center absolute z-10 top-14 left-20 w-24 gap-2 px-3 h-8 me-3 text-sm font-semibold text-indigo-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
                 <IoMdArrowBack />
                 Back
             </button>
