@@ -1,12 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import cookingBlog from '../assets/cookingBlog.svg';
-import Card from "../components/Card";
+import Card from "../components/Card.jsx";
+import Navbar from '../components/Navbar.jsx';
 
 const Home = ({ recipes }) => {
+    const navigate = useNavigate()
+
     return (
         <div>
+            <Navbar />
             <div className="flex-col m-4 gap-x-3">
-                <div className="mb-7">
-                    <h1 className="justify-center items-center text-center text-black font-normal text-7xl mt-11">
+                <div className="mt-32 pb-7">
+                    <h1 className="justify-center items-center text-center text-black font-normal text-7xl mt-10">
                         Discover Delicious
                     </h1>
                     <h2 className="flex justify-center items-center text-indigo-600 font-extrabold text-6xl">Recipes</h2>
@@ -21,7 +26,7 @@ const Home = ({ recipes }) => {
                     <span className="font-semibold flex items-center">Cooking BLog</span>
                 </div>
             </div>
-            <div className="flex justify-center items-center gap-5 flex-wrap mx-6">
+            <div className="flex justify-center items-center flex-wrap">
                 {
                     recipes.map((recipe) => {
                         return (

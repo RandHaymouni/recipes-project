@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Hero from '../src/pages/Hero.jsx';
 import Home from '../src/pages/Home.jsx';
+import Login from '../src/pages/Login.jsx';
 import NotFound from '../src/pages/NotFound.jsx';
 import RecipeDetails from '../src/pages/RecipeDetails.jsx';
-import Login from '../src/pages/Login.jsx';
 import './App.css';
 
 

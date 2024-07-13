@@ -4,7 +4,8 @@ const Hero = () => {
     return (
         <div className="relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden w-screen min-h-screen">
             <div className="absolute inset-0">
-                <img src="https://www.southernliving.com/thmb/kiA6RNwqrpXAj62q7kWyo2B-umI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Slow-Cooker-Salisbury-Steaks_16x9_104-6c5039ffbedf4b49b38f708f72eda844.jpg"
+                <img
+                    src="https://www.southernliving.com/thmb/kiA6RNwqrpXAj62q7kWyo2B-umI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Slow-Cooker-Salisbury-Steaks_16x9_104-6c5039ffbedf4b49b38f708f72eda844.jpg"
                     alt="Background Image"
                     className="object-cover object-center w-full h-full"
                 />
