@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { FcBusinessContact, FcReading, FcTodoList } from "react-icons/fc";
+import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 const RecipeDetails = () => {
     const { id } = useParams();
     const [recipe, setRecipe] = useState(null);
     const [isHeartRed, setIsHeartRed] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const handleHeartClick = () => {
         setIsHeartRed(!isHeartRed);
@@ -18,37 +20,43 @@ const RecipeDetails = () => {
                     return res.json();
                 }).then(data => {
                     setRecipe(data);
-                    setLoding(false);
+                    setLoading(false);
                 })
         };
         getRecipe();
     }, [id]);
 
-    if (!recipe) {
-        return <div>Recipe not found</div>;
+    if (loading) {
+        return <span class="loader"></span>
     }
 
     return (
         <>
             <Navbar />
             <div className="font-sans min-h-screen w-screen bg-white">
-                <div className="p-5 mt-10">
-                </div>
-                <div className="p-4 lg:max-w-7xl max-w-xl mx-auto flex flex-wrap">
-                    <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12 p-6 rounded-lg border-2 border-indigo-100 shadow-xl bg-white">
-                        <div className="lg:col-span-3 w-full lg:sticky top-0 text-center">
-                            <div className="px-4 py-10 rounded-md relative border-4 border-indigo-100 bg-white">
-                                <img src={recipe.image} alt={recipe.name} className="w-3/4 rounded object-cover mx-auto" />
-                                <button type="button" className="absolute top-4 right-4 bg-white border-black" onClick={handleHeartClick}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" fill={isHeartRed ? "#ff0000" : "#ccc"} className="mr-1 hover:fill-[#313131] bg-white" viewBox="0 0 64 64">
-                                        <path d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z" data-original="#000000"></path>
+                <div className="p-6 lg:max-w-7xl max-w-xl mx-auto my-20">
+                    <div class="grid items-center grid-cols-1 lg:grid-cols-5 gap-6 shadow-xl p-6 rounded-lg border-2 border-indigo-100">
+                        <div class="lg:col-span-3 w-full top-0 px-5 text-center border-4 border-indigo-100 rounded-md">
+                            <div class="px-4 py-10 rounded-lg relative flex items-center">
+                                <img
+                                    src={recipe.image}
+                                    alt={recipe.name}
+                                    className="w-3/4 rounded-3xl object-cover m-7 mx-auto" />
+                                <button
+                                    type="button"
+                                    className="absolute top-4 right-4 bg-white border-indigo-100"
+                                    onClick={handleHeartClick}>
+                                    <svg xmlns="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/2048px-Heart_coraz%C3%B3n.svg.png" width="20px" fill={isHeartRed ? "#ff0000" : "#3949AB"} className="bg-white" viewBox="0 0 64 64">
+                                        <path d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                                            data-original="#000000">
+                                        </path>
                                     </svg>
                                 </button>
                             </div>
                         </div>
-                        <div className="lg:col-span-2 bg-white w-full p-6 pb-24 rounded-md">
-                            <h2 className="text-2xl font-extrabold text-gray-800 mt-16">{recipe.name}| Recipe</h2>
-                            <div className="flex space-x-2 mt-4 border-b-2 border-indigo-600 pb-3">
+                        <div className="lg:col-span-2 bg-white w-full p-6 flex flex-col flex-wrap">
+                            <h2 className="text-2xl font-extrabold text-gray-800">{recipe.name} | Recipe</h2>
+                            <div className="flex space-x-2 mt-4 border-b-2 border-indigo-600 pb-3 flex-wrap">
                                 <svg className="w-5 fill-yellow-400" viewBox="0 0 14 13" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -77,29 +85,47 @@ const RecipeDetails = () => {
                                 <h4 className="text-gray-800 text-base mx-3">{recipe.rating}</h4>
                                 <p className="text-gray-600">/5</p>
                             </div>
-                            <ul className="flex flex-col gap-y-3 mt-10">
+                            <div className="flex justify-start mt-9 flex-wrap items-center">
+                                <p className="text-black font-extrabold text-xl mb-4 flex justify-center items-center gap-3">
+                                    <FcBusinessContact className="h-6 w-6" />
+                                    About:
+                                </p>
+                            </div>
+                            <ul className="flex flex-col gap-y-3 gap-x-72 flex-wrap justify-start">
                                 <li>
-                                    <span className="text-lg font-bold text-gray-900 mx-3">Difficulty:</span>
+                                    <span className="text-lg font-bold text-gray-900 mx-3">
+                                        Difficulty:
+                                    </span>
                                     <span className="font-normal text-gray-900">{recipe.difficulty}</span>
                                 </li>
-                                <li className="gap-3">
-                                    <span className="text-lg font-bold text-gray-900 mx-3">Preparing Time:</span>
+                                <li>
+                                    <span className="text-lg font-bold text-gray-900 mx-3">
+                                        Preparing Time:
+                                    </span>
                                     <span className="font-normal text-gray-900">{recipe.prepTimeMinutes} Min</span>
                                 </li>
-                                <li className="gap-3">
-                                    <span className="text-lg font-bold text-gray-900 mx-3">Cooking Time: </span>
+                                <li>
+                                    <span className="text-lg font-bold text-gray-900 mx-3">
+                                        Cooking Time:
+                                    </span>
                                     <span className="font-normal text-gray-900">{recipe.cookTimeMinutes} Min</span>
                                 </li>
-                                <li className="gap-3">
-                                    <span className="text-lg font-bold text-gray-900 mx-3">Calories per serving: </span>
+                                <li>
+                                    <span className="text-lg font-bold text-gray-900 mx-3">
+                                        Calories per serving:
+                                    </span>
                                     <span className="font-normal text-gray-900">{recipe.caloriesPerServing} Cal</span>
                                 </li>
-                                <li className="gap-3">
-                                    <span className="text-lg font-bold text-gray-900 mx-3">Meal Type: </span>
+                                <li>
+                                    <span className="text-lg font-bold text-gray-900 mx-3">
+                                        Meal Type:
+                                    </span>
                                     <span className="font-normal text-gray-900">{recipe.mealType}</span>
                                 </li>
-                                <li className="gap-3">
-                                    <span className="text-lg font-bold text-gray-900 mx-3">Review Count: </span>
+                                <li>
+                                    <span className="text-lg font-bold text-gray-900 mx-3">
+                                        Review Count:
+                                    </span>
                                     <span className="font-normal text-gray-900">{recipe.reviewCount}</span>
                                 </li>
                             </ul>
@@ -107,10 +133,14 @@ const RecipeDetails = () => {
                     </div>
                     <div className="p-6 flex justify-evenly items-center mt-16 bg-white border-2 border-indigo-100 shadow-xl rounded-lg gap-10 w-full flex-wrap">
                         <div className="flex flex-col border-4 p-5 border-indigo-100 rounded-md">
-                            <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-indigo-600 p-3">Ingredients:</h3>
-                            <ul className="flex flex-col flex-wrap mt-4">
+                            <h3
+                                className="flex justify-center items-center gap-3 text-2xl font-bold text-gray-800 border-b-2 border-indigo-600 p-3">
+                                <FcTodoList />
+                                Ingredients:
+                            </h3>
+                            <ul className="flex flex-col mt-4">
                                 {
-                                    recipe.ingredients.map(inst =>
+                                    recipe.ingredients?.map(inst =>
                                         <li className="text-black font-semibold rounded-md mb-2 list-disc mx-10">
                                             {inst}
                                         </li>)
@@ -118,10 +148,14 @@ const RecipeDetails = () => {
                             </ul>
                         </div>
                         <div className="flex flex-col border-4 p-5 border-indigo-100 rounded-md">
-                            <h2 className="text-black text-2xl font-bold mb-4 flex justify-start mx-6 border-b-2 border-indigo-600 p-3">Instructions:</h2>
+                            <h2
+                                className="text-black text-2xl font-bold mb-4 flex justify-center items-center gap-3 mx-6 border-b-2 border-indigo-600 p-3">
+                                <FcReading />
+                                Instructions:
+                            </h2>
                             <ul className="text-black flex-col list-decimal justify-around mb-6 mx-6">
                                 {
-                                    recipe.instructions.map(inst =>
+                                    recipe.instructions?.map(inst =>
                                         <li className="text-black font-semibold mb-1 p-2 list-decimal">
                                             {inst}
                                         </li>)
@@ -129,7 +163,7 @@ const RecipeDetails = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="mt-16 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-6 border-2 bg-white border-indigo-100 sadow-xl rounded-lg flex flex-wrap">
+                    <div className="mt-16 p-6 border-2 bg-white border-indigo-100 sadow-xl rounded-lg flex flex-wrap">
                         <div className="bg-white rounded-md p-6 border-4 border-indigo-100">
                             <h3 className="text-xl font-bold text-gray-800">Reviews(10)</h3>
                             <div className="grid md:grid-cols-2 gap-12 mt-4">
@@ -204,6 +238,7 @@ const RecipeDetails = () => {
                     </div>
                 </div>
             </div>
+
         </>
     )
 }

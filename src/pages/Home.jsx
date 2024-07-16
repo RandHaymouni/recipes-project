@@ -1,13 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import cookingBlog from '../assets/cookingBlog.svg';
 import Card from "../components/Card.jsx";
 import Navbar from '../components/Navbar.jsx';
 
 const Home = ({ recipes }) => {
-    const navigate = useNavigate()
-
     return (
-        <div>
+        <div className="flex flex-col flex-wrap">
             <Navbar />
             <div className="flex-col m-4 gap-x-3">
                 <div className="mt-28 pb-7">
@@ -21,7 +18,7 @@ const Home = ({ recipes }) => {
                 </p>
             </div>
             <div className="border-b mb-5 flex justify-between text-sm m-14">
-                <div className="text-indigo-600 flex items-center pb-2 pr-2 border-b-2 border-indigo-600 uppercase mx-20">
+                <div className="text-indigo-600 flex items-center pb-2 pr-2 border-b-2 border-indigo-600 uppercase mx-16">
                     <img src={cookingBlog} alt="Cooking Blog" className="h-6 mr-3" />
                     <span className="font-semibold flex items-center">Cooking BLog</span>
                 </div>

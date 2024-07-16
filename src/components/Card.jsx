@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Card = ({ recipe }) => {
     const navigate = useNavigate();
-
     const handleButtonClick = (id) => {
         navigate(`/recipe/${id}`);
     };
