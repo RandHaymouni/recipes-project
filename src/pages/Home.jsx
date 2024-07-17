@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import cookingBlog from '../assets/cookingBlog.svg';
 import Card from "../components/Card.jsx";
 import Navbar from '../components/Navbar.jsx';
+import { RecipeContext } from '../components/providers/RecipeProvider.jsx';
 
-const Home = ({ recipes }) => {
+const Home = () => {
+    const recipeContext = useContext(RecipeContext);
+
     return (
         <div className="flex flex-col flex-wrap">
             <Navbar />
@@ -25,7 +29,7 @@ const Home = ({ recipes }) => {
             </div>
             <div className="flex justify-center items-center flex-wrap">
                 {
-                    recipes.map((recipe) => {
+                    recipeContext.recipes.map((recipe) => {
                         return (
                             <Card recipe={recipe} key={recipe.id} />
                         )

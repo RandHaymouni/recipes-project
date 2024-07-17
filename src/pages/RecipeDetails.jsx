@@ -8,7 +8,6 @@ const RecipeDetails = () => {
     const [recipe, setRecipe] = useState(null);
     const [isHeartRed, setIsHeartRed] = useState(false);
     const [loading, setLoading] = useState(true);
-
     const handleHeartClick = () => {
         setIsHeartRed(!isHeartRed);
     };
@@ -16,9 +15,8 @@ const RecipeDetails = () => {
     useEffect(() => {
         const getRecipe = () => {
             fetch(`https://dummyjson.com/recipes/${id}`)
-                .then(res => {
-                    return res.json();
-                }).then(data => {
+                .then(res => res.json()
+                ).then(data => {
                     setRecipe(data);
                     setLoading(false);
                 })
@@ -170,7 +168,11 @@ const RecipeDetails = () => {
                                 <div className="space-y-3">
                                     <div className="flex items-center">
                                         <p className="text-sm text-gray-800 font-bold">5.0</p>
-                                        <svg className="w-5 fill-indigo-600 ml-1" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg
+                                            className="w-5 fill-indigo-600 ml-1"
+                                            viewBox="0 0 14 13"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
                                         </svg>
@@ -181,7 +183,11 @@ const RecipeDetails = () => {
                                     </div>
                                     <div className="flex items-center">
                                         <p className="text-sm text-gray-800 font-bold">4.0</p>
-                                        <svg className="w-5 fill-indigo-600 ml-1" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg
+                                            className="w-5 fill-indigo-600 ml-1"
+                                            viewBox="0 0 14 13"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
                                         </svg>
@@ -192,7 +198,11 @@ const RecipeDetails = () => {
                                     </div>
                                     <div className="flex items-center">
                                         <p className="text-sm text-gray-800 font-bold">3.0</p>
-                                        <svg className="w-5 fill-indigo-600 ml-1" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg
+                                            className="w-5 fill-indigo-600 ml-1"
+                                            viewBox="0 0 14 13"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
                                         </svg>
@@ -203,7 +213,11 @@ const RecipeDetails = () => {
                                     </div>
                                     <div className="flex items-center">
                                         <p className="text-sm text-gray-800 font-bold">2.0</p>
-                                        <svg className="w-5 fill-indigo-600 ml-1" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg
+                                            className="w-5 fill-indigo-600 ml-1"
+                                            viewBox="0 0 14 13"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
                                         </svg>
@@ -214,7 +228,11 @@ const RecipeDetails = () => {
                                     </div>
                                     <div className="flex items-center">
                                         <p className="text-sm text-gray-800 font-bold">1.0</p>
-                                        <svg className="w-5 fill-indigo-600 ml-1" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg
+                                            className="w-5 fill-indigo-600 ml-1"
+                                            viewBox="0 0 14 13"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
                                         </svg>
@@ -226,10 +244,14 @@ const RecipeDetails = () => {
                                 </div>
                                 <div>
                                     <div className="flex items-start">
-                                        <img src="https://readymadeui.com/team-2.webp" className="w-12 h-12 rounded-full border-2 border-white" />
+                                        <img
+                                            src="https://readymadeui.com/team-2.webp"
+                                            className="w-12 h-12 rounded-full border-2 border-white" />
                                         <div className="ml-3">
                                             <h4 className="text-sm font-bold text-gray-800">John Doe</h4>
-                                            <p className="text-sm mt-4 text-gray-800">Recipes here are more than just instructions; they're a celebration of flavor and creativity. Each dish tells a story of tradition and innovation, inviting you to savor every moment and create unforgettable culinary experiences.</p>
+                                            <p className="text-sm mt-4 text-gray-800">
+                                                Recipes here are more than just instructions; they're a celebration of flavor and creativity. Each dish tells a story of tradition and innovation, inviting you to savor every moment and create unforgettable culinary experiences.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -238,7 +260,6 @@ const RecipeDetails = () => {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

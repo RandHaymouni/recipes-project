@@ -16,15 +16,29 @@ const NotFound = () => {
                     className="text-lg md:text-xl lg:text-2xl text-gray-500 my-12">
                     Sorry, the page you are looking for could not be found.
                 </p>
-                <a href="/home" className="flex items-center space-x-2 bg-white hover:bg-white hover:scale-105 text-indigo-600 px-4 py-2 rounded transition duration-150" title="Return Home">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+                <a
+                    href="/home"
+                    className="flex items-center space-x-2 bg-white hover:bg-white hover:scale-105 text-indigo-600 px-4 py-2 rounded transition duration-150"
+                    title="Return Home">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            fillRule="evenodd"
+                            d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
                     </svg>
                     <span>Return Home</span>
                 </a>
             </div>
             <div className="w-1/2 lg:h-full flex lg:items-end justify-center p-4">
-                <svg className="w-full text-indigo-600" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1120.59226 777.91584" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <svg
+                    className="w-full text-indigo-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    data-name="Layer 1"
+                    viewBox="0 0 1120.59226 777.91584"
+                    xmlnsXlink="http://www.w3.org/1999/xlink">
                     <title>not found</title>
                     <circle
                         cx="212.59226" cy="103" r="64" fill="#ff6584">

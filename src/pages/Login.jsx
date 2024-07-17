@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState("");
     const [valid, setValid] = useState(true);
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
-
     const handleSubmit = (e) => {
         e.preventDefault();
         try {
@@ -22,20 +21,21 @@ const Login = () => {
                     password: formData.password,
                     expiresInMins: 30,
                 })
-            }).then(res => {
-                return res.json();
-            }).then(data => {
-                if (data.token) {
-                    localStorage.setItem('token', data.token);
-                    navigate("/home");
-                } else {
-                    setValid(false);
-                    setErrors({ form: "Invalid username or password!" });
-                }
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.token) {
+                        localStorage.setItem('token', data.token);
+                        alert("Login successful!");
+                        navigate("/home");
+                    } else {
+                        setValid(false);
+                        setErrors("Invalid username or password!");
+                    }
+                })
         }
         catch (error) {
-            setErrors({ form: "An error occurred during login!" });
+            setErrors("An error occurred during login!");
         }
     };
 
@@ -61,11 +61,14 @@ const Login = () => {
                 <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                     <div className="max-w-md mx-auto">
                         <div>
-                            <h1 className="text-2xl font-semibold text-gray-900 border-b-2 border-indigo-200 p-3">Login</h1>
+                            <h1
+                                className="text-2xl font-semibold text-gray-900 border-b-2 border-indigo-200 p-3">
+                                Login
+                            </h1>
                         </div>
                         <div className="divide-y divide-gray-200">
                             <form onSubmit={handleSubmit} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                                {!valid && <span className="text-red-500">{errors.form || `${errors.username || ''} ${errors.password || ''}`}</span>}
+                                {!valid && <span className="text-red-500">{errors}</span>}
                                 <div>
                                     <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900">
                                         <span className="text-red-700 text-lg mx-2">*</span> UserName
@@ -107,7 +110,14 @@ const Login = () => {
                     </div>
                     <div className="w-full flex justify-center">
                         <button className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                            <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="-0.5 0 48 48" version="1.1">
+                            <svg
+                                className="h-6 w-6 mr-2"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlnsXlink="http://www.w3.org/1999/xlink"
+                                width="800px"
+                                height="800px"
+                                viewBox="-0.5 0 48 48"
+                                version="1.1">
                                 <title>Google-color</title>
                                 <desc>Created with Sketch.</desc>
                                 <defs></defs>
