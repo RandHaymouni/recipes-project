@@ -8,6 +8,7 @@ const Navbar = () => {
     const handleLogout = () => {
         localStorage.removeItem("token")
         navigate("/")
+        alert("Logout successful!");
     }
 
     return (
