@@ -1,10 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
+import RecipeProvider from './components/providers/RecipeProvider.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <RecipeProvider>
+        <App />
+      </RecipeProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 )
