@@ -7,6 +7,8 @@ import NotFound from '../src/pages/NotFound.jsx';
 import RecipeDetails from '../src/pages/RecipeDetails.jsx';
 import { RecipeContext } from './components/providers/RecipeProvider.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
+import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
+import "react-toastify/ReactToastify.css"
 import './App.css';
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
 
   return (
     <div>
+      <ToastContainer draggable={false} transition={Zoom} autoClose={1500} />
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/login" element={<Login />} />

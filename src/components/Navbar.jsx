@@ -2,13 +2,17 @@ import React from 'react';
 import { ImHome3 } from "react-icons/im";
 import { PiBellRingingBold } from "react-icons/pi";
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const handleLogout = () => {
         localStorage.removeItem("token")
         navigate("/")
-        alert("Logout successful!");
+        toast.success("Logout successful!", {
+            theme: "colored",
+            position: "top-center"
+        });
     }
 
     return (

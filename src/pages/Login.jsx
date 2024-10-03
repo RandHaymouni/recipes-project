@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { IoMdArrowBack } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [errors, setErrors] = useState("");
-    const [valid, setValid] = useState(true);
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -24,18 +23,27 @@ const Login = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.token) {
-                        localStorage.setItem('token', data.token);
-                        alert("Login successful!");
+                    console.log(data)
+                    if (data.accessToken) {
+                        localStorage.setItem('token', data.accessToken);
+                        toast.success("Login successfull", {
+                            theme: "colored",
+                            position: "top-center"
+                        })
                         navigate("/home");
                     } else {
-                        setValid(false);
-                        setErrors("Invalid username or password!");
+                        toast.warn("Invalid username or password!", {
+                            theme: "colored",
+                            position: "top-center"
+                        })
                     }
                 })
         }
         catch (error) {
-            setErrors("An error occurred during login!");
+            toast.error("An error occurred during login!", {
+                theme: "colored",
+                position: "top-center"
+            })
         }
     };
 
@@ -68,7 +76,6 @@ const Login = () => {
                         </div>
                         <div className="divide-y divide-gray-200">
                             <form onSubmit={handleSubmit} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                                {!valid && <span className="text-red-500">{errors}</span>}
                                 <div>
                                     <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900">
                                         <span className="text-red-700 text-lg mx-2">*</span> UserName
