@@ -19,7 +19,7 @@ const Navbar = () => {
         <header className='flex shadow-lg bg-white font-[sans-serif] min-h-[70px] fixed z-20 top-0 start-0 w-screen flex-wrap'>
             <div
                 className='flex flex-wrap items-center justify-between sm:px-10 px-6 py-3 relative lg:gap-y-4 gap-y-6 gap-x-4 w-full'>
-                <div className="flex justify-center items-center gap-3 flex-wrap">
+                <div className="flex justify-center items-center gap-3 flex-wrap ">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSddU1KTCzNYwT2yZTpAMMkPXQRp3Duy1PxMiHaOr67Fonmtm7n9Co52UqBbaRuOnF_ZT8&usqp=CAU"
                         alt="logo"

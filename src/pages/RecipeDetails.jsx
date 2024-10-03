@@ -33,7 +33,7 @@ const RecipeDetails = () => {
             <Navbar />
             <div className="font-sans min-h-screen w-screen bg-white">
                 <div className="p-6 lg:max-w-7xl max-w-xl mx-auto my-20">
-                    <div class="grid items-center grid-cols-1 lg:grid-cols-5 gap-6 shadow-xl p-6 rounded-lg border-2 border-indigo-100">
+                    <div class="grid items-center grid-cols-1 lg:grid-cols-5 gap-6 shadow-xl p-6 rounded-lg border-2 border-indigo-100 mt-14">
                         <div class="lg:col-span-3 w-full top-0 px-5 text-center border-4 border-indigo-100 rounded-md">
                             <div class="px-4 py-10 rounded-lg relative flex items-center">
                                 <img
